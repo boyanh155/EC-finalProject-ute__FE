@@ -3,6 +3,7 @@ import "../../assets/css/home/Hero.css"
 import mainBoy from "../../assets/Home/Hero/mainBoy.png"
 import leftBoy from "../../assets/Home/Hero/About medium photo.png"
 import Navbar from './Navbar'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 // import LazyLoad from "react-lazyload"
 const Hero = () => {
     return (

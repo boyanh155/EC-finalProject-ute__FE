@@ -33,8 +33,8 @@ const ToTop = styled.div`
   color:${grey};
   svg{
     color:${grey};
-    animation: ${jump} 3s linear infinite alternate;
-    -webkit-animation: ${jump} 2s linear infinite alternate;
+    // animation: ${jump} 3s linear infinite alternate;
+    // -webkit-animation: ${jump} 2s linear infinite alternate;
   }
 
   &:hover{
