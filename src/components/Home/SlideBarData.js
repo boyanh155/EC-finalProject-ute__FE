@@ -1,34 +1,43 @@
-
-import "../../assets/css/home/NavBar.css"
-export const SlideBarData = [
-    {
-        title:'Trang chủ',
-        path:'/',
-        cName:'nav-text',
-    },    
-    {
-        title:'Cửa hàng',
-        path:'/shop',
-        cName:'nav-text',
+import "../../assets/css/home/NavBar.css";
+export const SlideBarData = [{
+        title: "Home",
+        path: "#",
+        cName: "nav-text",
     },
     {
-        title:'Về chúng tôi',
-        path:'/haircare',
-        cName:'nav-text',
+        title: "Shop",
+        path: "/shop",
+        cName: "nav-text",
     },
     {
-        title:'Dịch vụ',
-        path:'/haircare',
-        cName:'nav-text',
-    },    
+        title: "About us",
+        path: "#about",
+        cName: "nav-text",
+    },
     {
-        title:'Chăm sóc da',
-        path:'/skincare',
-        cName:'nav-text',
-    },    
+        title: "All service",
+        path: "#service",
+        cName: "nav-text",
+    },
     {
-        title:'Chăm sóc tóc',
-        path:'/haircare',
-        cName:'nav-text',
-    }
-]
+        title: "Skin service",
+        path: "/skincare",
+        cName: "nav-text",
+    },
+    {
+        title: "Hair service",
+        path: "/haircare",
+        cName: "nav-text",
+    },
+];
+export const bookSlideBarData = [{
+        title: " Book as guest",
+        path: "/guestbooking",
+        cName: "nav-text",
+    },
+    {
+        title: "Book as member",
+        path: "/memberbooking",
+        cName: "nav-text",
+    },
+];

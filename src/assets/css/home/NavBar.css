@@ -9,29 +9,31 @@
 .link {
     list-style: none;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
-.hero__bt {
-    text-decoration: none;
-    position: absolute;
+
+/* nav button */
+
+.bt {
     width: 160px;
     height: 50px;
-    top: 29px;
-    right: 150px;
     color: #000;
-    letter-spacing: -0.4px;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
     border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    z-index: 99999;
+    text-decoration: none;
+    letter-spacing: -0.4px;
+    font-size: 18px;
+    line-height: 22px;
+    right: 150px;
+    cursor: pointer;
 }
 
-.hero__bt:hover {
-    cursor: pointer;
+.bt:hover {
     opacity: 0.5;
     transition: all 0.2s linear;
     -webkit-transition: all 0.2s linear;
@@ -40,23 +42,70 @@
     -o-transition: all 0.2s linear;
 }
 
-.close-bt {
-    position: absolute;
-    top: -20px;
-    right: -100px;
+
+/* Nav common */
+
+.nav {
+    position: fixed;
+    right: 80px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 68px;
+    z-index: 99999;
 }
 
-.inactiveMenu {
+.nav__list {
+    list-style: none;
+}
+
+.nav__item {
+    display: block;
+    position: relative;
+    z-index: 8;
+}
+
+.nav__item span {
+    display: block;
+    position: relative;
+    z-index: 9;
+}
+
+.nav__item::before {
+    content: '';
     position: absolute;
-    transform: translateX(70px);
-    -webkit-transform: translateX(70px);
-    -moz-transform: translateX(70px);
-    -ms-transform: translateX(70px);
-    -o-transform: translateX(70px);
+    top: 4px;
+    right: -24px;
+    display: block;
+    padding: 34px 110px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 7;
+    transition: 0.3s all linear;
+    -webkit-transition: 0.3s all linear;
+    -moz-transition: 0.3s all linear;
+    -ms-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
+}
+
+.nav__item:hover {
+    color: black;
+    transition: 0.3s all linear;
+    -webkit-transition: 0.3s all linear;
+    -moz-transition: 0.3s all linear;
+    -ms-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
+}
+
+.nav__item:hover::before {
+    background-color: rgba(185, 183, 183, 0.7);
+    transition: 0.3s all linear;
+    -webkit-transition: 0.3s all linear;
+    -moz-transition: 0.3s all linear;
+    -ms-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
 }
 
 .inactiveClose {
-    position: absolute;
+    position: fixed;
     transform: translateX(800px);
     -webkit-transform: translateX(800px);
     -moz-transform: translateX(800px);
@@ -64,25 +113,92 @@
     -o-transform: translateX(800px);
 }
 
-.nav-menu {
-    top: 100px;
-    right: 70px;
-    position: absolute;
-    text-align: right;
-    font-size: 30px;
-    line-height: 68px;
+
+/* menu */
+
+.hero__bt {
+    position: fixed;
+    top: 30px;
 }
 
-.nav-menu-list {
-    list-style: none;
+.inactiveMenu {
+    position: fixed;
+    transform: translateX(70px);
+    -webkit-transform: translateX(70px);
+    -moz-transform: translateX(70px);
+    -ms-transform: translateX(70px);
+    -o-transform: translateX(70px);
 }
+
+.nav-menu {
+    top: 100px;
+}
+
+.nav-menu-list {}
 
 .nav-menu-item {}
 
-.nav-menu-item:hover {
-    transform: translateY(-8px);
-    -webkit-transform: translateY(-8px);
-    -moz-transform: translateY(-8px);
-    -ms-transform: translateY(-8px);
-    -o-transform: translateY(-8px);
+
+/* book */
+
+.book__bt {
+    position: fixed;
+    top: 90px;
+}
+
+.inactiveBook {
+    position: fixed;
+    transform: translateY(440px);
+    -webkit-transform: translateY(440px);
+    -moz-transform: translateY(440px);
+    -ms-transform: translateY(440px);
+    -o-transform: translateY(440px);
+}
+
+.nav-book-open {
+    top: 598px;
+}
+
+.nav-book-close {
+    top: 160px;
+}
+
+.nav-book-list {}
+
+.nav-book-item {}
+
+.nav-book-item::before {
+    padding: 34px 150px;
+}
+
+.inactiveBook {}
+
+.book-menuOpen {
+    position: fixed;
+    transform: translateY(440px);
+    -webkit-transform: translateY(440px);
+    -moz-transform: translateY(440px);
+    -ms-transform: translateY(440px);
+    -o-transform: translateY(440px);
+}
+
+.book-menuClose {
+    position: fixed;
+    transform: translate(-100px, -900px);
+    -webkit-transform: translate(-100px, -900px);
+    -moz-transform: translate(-100px, -900px);
+    -ms-transform: translate(-100px, -900px);
+    -o-transform: translate(-100px, -900px);
+}
+
+.inactiveBook-menuOpen {}
+
+.inactiveBook-menuClose {}
+
+
+/* price */
+
+.price__bt {
+    position: fixed;
+    top: 150px;
 }
