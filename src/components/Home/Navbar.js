@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import "../../assets/css/home/Hero.css";
 import "../../assets/css/home/NavBar.css";
-import { SlideBarData,bookSlideBarData } from "./SlideBarData";
+import { SlideBarData, bookSlideBarData } from "./SlideBarData";
 import { useState } from "react";
 
-const Navbar = ({ colorMenuChange,colorBookChange }) => {
+const Navbar = ({ colorMenuChange, colorBookChange }) => {
   // false is close
   const [slideBar, setSlideBar] = useState(false);
   const [bookBar, setBookBar] = useState(false);
   // content
   const [menuDisPlay, setMenuDisPlay] = useState("Menu");
   const [bookDisplay, setBookDisplay] = useState("Book");
-  const [priceDisplay, setPriceDisplay] = useState("Price");
+  // const [priceDisplay, setPriceDisplay] = useState("Price");
   const showSideBar = () => {
     setSlideBar(!slideBar);
     setMenuDisPlay((prev) => {
@@ -45,9 +45,7 @@ const Navbar = ({ colorMenuChange,colorBookChange }) => {
         style={colorMenuChange}
       >
         <div>
-          <span className="hero__bt__text" >
-            {menuDisPlay}
-          </span>
+          <span className="hero__bt__text">{menuDisPlay}</span>
         </div>
       </Link>
       {/* Item */}
@@ -60,54 +58,63 @@ const Navbar = ({ colorMenuChange,colorBookChange }) => {
           {SlideBarData.map((item, index) => {
             return (
               <Link key={index} to={item.path} className="link">
-                <li className="nav-menu-item nav__item smooth"><span>{item.title}</span></li>
+                <li className="nav-menu-item nav__item smooth">
+                  <span>{item.title}</span>
+                </li>
               </Link>
             );
           })}
         </ul>
-
-       </nav>
-       {/* Price and Location */}
-       {/* <div className="bt price__bt">
+      </nav>
+      {/* Price and Location */}
+      {/* <div className="bt price__bt">
          Price&Location
         </div> */}
-        {/* Book */}
-        {/* Button */}
-        <Link
+      {/* Book */}
+      {/* Button */}
+      <Link
         to="#"
         onClick={showBookSideBar}
         className={
           slideBar ? "book__bt bt smooth inactiveBook" : "book__bt bt smooth"
         }
         style={colorBookChange}
-        >
+      >
         <div>
-          <span className="hero__bt__text" >
-            {bookDisplay}
-          </span>
+          <span className="hero__bt__text">{bookDisplay}</span>
         </div>
-        </Link>
-        {/* Item */}
-        <nav
-        className={slideBar?(
-          bookBar ? "nav nav-book-open smooth" : "nav nav-book-open book-menuOpen smooth"
-        ):(
-          bookBar ? "nav nav-book-close smooth" : "nav nav-book-close book-menuClose smooth"
-        )
+      </Link>
+      {/* Item */}
+      <nav
+        className={
+          slideBar
+            ? //menu open
+              bookBar
+              ? //book open
+                "nav nav-book-open smooth"
+              : //book close
+                "nav nav-book-open book-menuOpen smooth"
+            : //menu close
+            bookBar
+            ? //book open
+              "nav nav-book-close smooth"
+            : //book close
+              "nav nav-book-close book-menuClose smooth"
         }
       >
         <ul className="nav nav-book-list nav__list">
           {bookSlideBarData.map((item, index) => {
             return (
               <Link key={index} to={item.path} className="link">
-                <li className="nav-book-item nav__item smooth"><span>{item.title}</span></li>
+                <li className="nav-book-item nav__item smooth">
+                  <span>{item.title}</span>
+                </li>
               </Link>
             );
           })}
         </ul>
-
-       </nav>
-       </>
+      </nav>
+    </>
   );
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
 import * as Icon from "react-icons/io";
-import styled,{ keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components";
 //icon color
-const grey = `rgba(192,192,192,0.9)`
+const grey = `rgba(192,192,192,0.9)`;
 //animation
 const jump = keyframes`
   0% { 
@@ -21,38 +21,37 @@ const jump = keyframes`
   }
 `;
 const ToTop = styled.div`
-  cursor:pointer;
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  font-size:30px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-size: 30px;
   padding: 10px 20px;
-  border:2px solid ${grey};
+  border: 2px solid ${grey};
   transition: 0.2s all linear;
-  border-radius:10%;
-  color:${grey};
-  svg{
-    color:${grey};
+  border-radius: 10%;
+  color: ${grey};
+  svg {
+    color: ${grey};
     // animation: ${jump} 3s linear infinite alternate;
     // -webkit-animation: ${jump} 2s linear infinite alternate;
   }
 
-  &:hover{
-    
-    opacity:0.5;
+  &:hover {
+    opacity: 0.5;
     transition: 0.2s all linear;
   }
-`
+`;
 //icon
-const arrow = ()=><Icon.IoIosArrowUp />
-const IconA = styled(arrow)`
-`
-const ScrollToTop = ({props,onClick}) => {
+const arrow = () => <Icon.IoIosArrowUp />;
+const IconA = styled(arrow)``;
+const ScrollToTop = ({ props, onClick }) => {
   return (
-    props&&
-    <ToTop onClick={onClick}>
-      <IconA />
-    </ToTop>
+    props && (
+      <ToTop onClick={onClick}>
+        <IconA />
+      </ToTop>
+    )
   );
 };
 

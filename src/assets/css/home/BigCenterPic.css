@@ -1,8 +1,24 @@
+.smooth {
+    transition: 0.3s all linear;
+    -webkit-transition: 0.3s all linear;
+    -moz-transition: 0.3s all linear;
+    -ms-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
+}
+
 .videoWrapper {
     display: block;
     height: 900px;
+    width: 100%;
     position: relative;
 }
+
+.test::after {
+    content: none;
+}
+
+
+/* Layer */
 
 .videoWrapper::before {
     content: '';
@@ -11,19 +27,23 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0);
-    opacity: 0.75;
+    opacity: 0.9;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
 }
 
-.videoInner {}
+.videoInner {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
 
 .textInner {
     flex-direction: column;
     pointer-events: none;
     display: flex;
     position: relative;
-    z-index: 2;
+    z-index: 4;
     justify-content: center;
     align-items: center;
     bottom: 75%;
@@ -42,5 +62,116 @@
     color: #9e9590;
     text-align: center
 }
+
+
+/* Pause content */
+
+.videoWrapper-play {
+    width: 100%;
+    height: 1100px;
+    position: relative;
+    background-color: rgba(166, 182, 156);
+    z-index: 1;
+    transition: all 0.3 linear;
+    -webkit-transition: all 0.3 linear;
+    -moz-transition: all 0.3 linear;
+    -ms-transition: all 0.3 linear;
+    -o-transition: all 0.3 linear;
+}
+
+.videoWrapper-play::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 1;
+    transition: all 0.3 linear;
+    -webkit-transition: all 0.3 linear;
+    -moz-transition: all 0.3 linear;
+    -ms-transition: all 0.3 linear;
+    -o-transition: all 0.3 linear;
+}
+
+
+/* Play content */
+
+.videoWrapper-pause {}
+
+.videoWrapper-play div:nth-child(3) {
+    display: none;
+}
+
+
+/* IconWrapper */
+
+.iconWrapper {
+    position: relative;
+    top: 100px;
+    left: 40%;
+    z-index: 4;
+}
+
+.iconWrapper i {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9;
+    font-size: 100px;
+    color: white;
+    pointer-events: none;
+}
+
+.iconWrapper::before {
+    background: #fff;
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+    top: 50px;
+    left: 130px;
+    width: 24px;
+    animation-name: point;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-fill-mode: forward;
+}
+
+.iconWrapper::after {
+    position: absolute;
+    top: 43px;
+    left: 132px;
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-style: solid;
+    border-width: 0 0 3px 3px;
+    border-color: #fff;
+    transform: rotate(45deg);
+    animation-name: point;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-fill-mode: forward;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+@keyframes point {
+    100% {
+        left: 150px;
+    }
+}
+
+.goOut {}
 
 @import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');

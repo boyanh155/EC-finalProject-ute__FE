@@ -5,6 +5,9 @@ const Hero = React.lazy(() => import("../Home/Hero"));
 const BigCenterPic = React.lazy(() => import("../Home/BigCenterPic"));
 const ScrollToTop = React.lazy(() => import("../Util/ScrollToTop"));
 const About = React.lazy(() => import("../Home/About"));
+const Service = React.lazy(() => import("./Service"));
+const IntroShop = React.lazy(() => import("./IntroShop"));
+const OurFooter =React.lazy (()=>import("./OurFooter"))
 
 const Index = () => {
   const [toTop, setToTop] = useState(false);
@@ -26,7 +29,6 @@ const Index = () => {
     };
   }, [y]);
   const scrollToTopHandler = () => {
-    console.log(true);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -38,8 +40,11 @@ const Index = () => {
       {" "}
       <Hero navBtTheme={y} />
       <BigCenterPic />
-      <About />
-      <ScrollToTop onClick={scrollToTopHandler} props={toTop} />{" "}
+      <About  />
+      <ScrollToTop onClick={scrollToTopHandler} props={toTop} /> 
+      <Service y={y}/>
+      <IntroShop />
+      <OurFooter/>
     </Suspense>
   );
 };

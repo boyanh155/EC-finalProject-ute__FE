@@ -155,9 +155,15 @@
     -o-transform: translateY(440px);
 }
 
+
+/* place of book nav bt when menu open */
+
 .nav-book-open {
     top: 598px;
 }
+
+
+/* place of book nav bt when menu close */
 
 .nav-book-close {
     top: 160px;
@@ -184,11 +190,11 @@
 
 .book-menuClose {
     position: fixed;
-    transform: translate(-100px, -900px);
-    -webkit-transform: translate(-100px, -900px);
-    -moz-transform: translate(-100px, -900px);
-    -ms-transform: translate(-100px, -900px);
-    -o-transform: translate(-100px, -900px);
+    transform: translate(-100px, -700px);
+    -webkit-transform: translate(-100px, -700px);
+    -moz-transform: translate(-100px, -700px);
+    -ms-transform: translate(-100px, -700px);
+    -o-transform: translate(-100px, -700px);
 }
 
 .inactiveBook-menuOpen {}

@@ -9,23 +9,31 @@ const Hero = ({ navBtTheme: y }) => {
   const [navState, setNavState] = useState("black");
   const [bookNavState, setBookNavState] = useState("black");
   const colorMenuChange = { color: `${navState}`, borderColor: `${navState}` };
-  const colorBookChange = { color: `${bookNavState}`, borderColor: `${bookNavState}` };
+  const colorBookChange = {
+    color: `${bookNavState}`,
+    borderColor: `${bookNavState}`,
+  };
   useEffect(() => {
-    if (y < 1225) {
+    if (y < 1225 || y >= 2173) {
       setNavState("black");
-    } else if (y >= 1225) {
+    } else if (y >= 1225 || y < 2173) {
       setNavState("wheat");
     }
-    if (y < 780) {
-        setBookNavState("black");
-      } else if (y >= 780) {
-        setBookNavState("wheat");
-      }
+    if (y < 780 || y >= 2114) {
+      setBookNavState("black");
+    } else if (y >= 780 || y < 2114) {
+      setBookNavState("wheat");
+    } 
+    if (y >= 4173) {
+      setBookNavState("white");
+      setNavState("white");
+
+    }
   }, [y]);
   return (
     <div className="hero__bg">
       <div className="grid wide">
-        <div className="hero--wordLogo"> SARK BARBER </div> 
+        <div className="hero--wordLogo"> SARK BARBER </div>
 
         {/* middle image */}
         <div className="hero__firstIMG">
@@ -44,8 +52,11 @@ const Hero = ({ navBtTheme: y }) => {
           />
         </div>
 
-        {/* nav icon */} 
-        <Navbar colorMenuChange={colorMenuChange} colorBookChange={colorBookChange}/> 
+        {/* nav icon */}
+        <Navbar
+          colorMenuChange={colorMenuChange}
+          colorBookChange={colorBookChange}
+        />
 
         {/* left image */}
         <div className="hero__leftIMG">
