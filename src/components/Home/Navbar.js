@@ -33,7 +33,7 @@ const Navbar = ({ colorMenuChange, colorBookChange }) => {
     });
   };
   return (
-    <>
+    <div className="Wrapper">
       {/* Menu */}
       {/* Button */}
       <Link
@@ -51,10 +51,12 @@ const Navbar = ({ colorMenuChange, colorBookChange }) => {
       {/* Item */}
       <nav
         className={
-          slideBar ? "nav nav-menu smooth" : "nav nav-menu inactiveClose smooth"
+          slideBar
+            ? "navBar nav-menu smooth"
+            : "navBar nav-menu inactiveClose smooth"
         }
       >
-        <ul className="nav nav-menu-list nav__list">
+        <ul className="navBar nav-menu-list nav__list">
           {SlideBarData.map((item, index) => {
             return (
               <Link key={index} to={item.path} className="link">
@@ -91,18 +93,18 @@ const Navbar = ({ colorMenuChange, colorBookChange }) => {
             ? //menu open
               bookBar
               ? //book open
-                "nav nav-book-open smooth"
+                "navBar nav-book-open smooth"
               : //book close
-                "nav nav-book-open book-menuOpen smooth"
+                "navBar nav-book-open book-menuOpen smooth"
             : //menu close
             bookBar
             ? //book open
-              "nav nav-book-close smooth"
+              "navBar nav-book-close smooth"
             : //book close
-              "nav nav-book-close book-menuClose smooth"
+              "navBar nav-book-close book-menuClose smooth"
         }
       >
-        <ul className="nav nav-book-list nav__list">
+        <ul className="navBar nav-book-list nav__list">
           {bookSlideBarData.map((item, index) => {
             return (
               <Link key={index} to={item.path} className="link">
@@ -114,7 +116,7 @@ const Navbar = ({ colorMenuChange, colorBookChange }) => {
           })}
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 

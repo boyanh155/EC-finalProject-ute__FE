@@ -5,3 +5,7 @@
     font-family: 'Lexend Deca', sans-serif;
     overflow-x: visible;
 }
+
+a {
+    text-decoration: none;
+}

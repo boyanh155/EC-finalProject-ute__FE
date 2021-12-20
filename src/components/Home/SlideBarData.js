@@ -32,12 +32,12 @@ export const SlideBarData = [{
 ];
 export const bookSlideBarData = [{
         title: " Book as guest",
-        path: "/guestbooking",
+        path: "/book",
         cName: "nav-text",
     },
     {
         title: "Book as member",
-        path: "/memberbooking",
+        path: "/login",
         cName: "nav-text",
     },
 ];

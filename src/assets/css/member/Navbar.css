@@ -1,0 +1,9 @@
+.nav-list {}
+
+.nav-item {}
+
+.nav-item-logo {
+    font-size: 40px;
+    color: #b45e3c;
+    cursor: pointer;
+}

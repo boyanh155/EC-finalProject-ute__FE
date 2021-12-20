@@ -1,0 +1,83 @@
+.WrapperShop {
+    position: relative;
+    z-index: 5;
+}
+
+.relative-7 {
+    position: relative;
+    z-index: 7;
+}
+
+.formWrap {
+    padding: 6% 0 2% 0;
+}
+
+.WrapperShop::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    z-index: 4;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.submit__bt {
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login__img {
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    position: relative;
+    z-index: 5;
+}
+
+.cancel__bt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.cancel__bt span {
+    line-height: 36px;
+    transition: 0.2s all linear;
+    -webkit-transition: 0.2s all linear;
+    -moz-transition: 0.2s all linear;
+    -ms-transition: 0.2s all linear;
+    -o-transition: 0.2s all linear;
+}
+
+.cancel__bt:hover span {
+    color: red;
+    transition: 0.2s all linear;
+    -webkit-transition: 0.2s all linear;
+    -moz-transition: 0.2s all linear;
+    -ms-transition: 0.2s all linear;
+    -o-transition: 0.2s all linear;
+}
+
+.recommendPassword span {
+    color: rgb(130, 177, 116);
+}
+
+@media (max-width:767px) {
+    .formBt {}
+    .submit__bt {
+        width: 100%;
+        justify-content: center;
+        height: 55px;
+        align-items: center;
+    }
+}

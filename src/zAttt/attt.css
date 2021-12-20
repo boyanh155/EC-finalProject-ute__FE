@@ -1,0 +1,32 @@
+.select-key-wrapper {
+    display: block;
+    align-items: center;
+}
+
+.select-key {
+    padding: 14px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 2px 4px 18px 2px;
+}
+
+.generate-bt {
+    margin-left: 20px;
+}
+
+.dropdown-menu-custom {
+    width: 30%;
+    border: 1px solid #ccc;
+}
+
+.dropdown-header {
+    border-bottom: 1px solid #ccc;
+}
+
+.de-wrap {
+    display: flex;
+}
+
+.de-bt {
+    flex: 1;
+}

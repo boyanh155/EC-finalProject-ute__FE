@@ -21,6 +21,7 @@ const jump = keyframes`
   }
 `;
 const ToTop = styled.div`
+  z-index: 99999;
   cursor: pointer;
   position: fixed;
   bottom: 24px;
