@@ -1,0 +1,2 @@
+(this.webpackJsonpprojectec=this.webpackJsonpprojectec||[]).push([[35],{410:function(c,e,t){"use strict";t.r(e);t(0);var n=t(1);e.default=function(){return Object(n.jsx)("div",{children:" CART PAGE "})}}}]);
+//# sourceMappingURL=35.f1c11cff.chunk.js.map

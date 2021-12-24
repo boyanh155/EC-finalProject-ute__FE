@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/member/Dashboard.js"],"names":["Dashboard"],"mappings":"yGAAA,uBAMeA,UAJG,WAChB,OAAO","file":"static/js/36.0bd38519.chunk.js","sourcesContent":["import React from \"react\";\r\n\r\nconst Dashboard = () => {\r\n  return <div>Login success welcome</div>;\r\n};\r\n\r\nexport default Dashboard;\r\n"],"sourceRoot":""}

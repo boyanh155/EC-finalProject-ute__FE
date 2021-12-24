@@ -1,0 +1,2 @@
+(this.webpackJsonpprojectec=this.webpackJsonpprojectec||[]).push([[34],{409:function(e,n,c){"use strict";c.r(n);var t=c(0),s=c.n(t),r=c(1),i=s.a.lazy((function(){return c.e(31).then(c.bind(null,325))}));n.default=function(){return Object(r.jsx)(t.Suspense,{fallback:Object(r.jsx)("h1",{children:"Loading..."}),children:Object(r.jsx)(i,{})})}}}]);
+//# sourceMappingURL=34.f97797fd.chunk.js.map

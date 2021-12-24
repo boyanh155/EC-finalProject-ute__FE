@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/member/book/Table.js"],"names":["Table"],"mappings":"yGAAA,uBAOeA,UALD,WAEZ,OAAO","file":"static/js/37.1eb289a9.chunk.js","sourcesContent":["import React, { useState } from \"react\";\r\n\r\nconst Table = () => {\r\n \r\n  return <div>Table</div>;\r\n};\r\n\r\nexport default Table;\r\n"],"sourceRoot":""}

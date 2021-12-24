@@ -1,0 +1,2 @@
+(this.webpackJsonpprojectec=this.webpackJsonpprojectec||[]).push([[36],{412:function(c,e,s){"use strict";s.r(e);s(0);var t=s(1);e.default=function(){return Object(t.jsx)("div",{children:"Login success welcome"})}}}]);
+//# sourceMappingURL=36.0bd38519.chunk.js.map
