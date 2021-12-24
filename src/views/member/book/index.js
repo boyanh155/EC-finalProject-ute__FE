@@ -7,8 +7,8 @@ const Book = React.lazy(() => import("./Book"));
 const ThankYou = React.lazy(() => import("./ThankYou"));
 
 const Index = () => {
-  const [page, setPage] = useState(0);
-  console.log(page)
+  const [page, setPage] = useState(1);
+  console.log(page);
   return (
     <div>
       <Navbar setPage={setPage} />
@@ -20,7 +20,6 @@ const Index = () => {
       {page === 2 ? <ThankYou /> : null}
     </div>
   );
-
 };
 
 export default Index;

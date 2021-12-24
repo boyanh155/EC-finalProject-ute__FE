@@ -3,6 +3,8 @@
 }
 
 .book-table-bt {
+    cursor: pointer;
+    color: white;
     width: 140px;
     background-color: #b45e3c;
     border-radius: 100px;
@@ -21,6 +23,16 @@
 .book-table-bt span {
     color: white;
     line-height: 40px;
+    font-size: 24px;
+    display: block;
+}
+
+.looking-for-table {
+    width: 300px;
+}
+
+.looking-for-table span {
+    line-height: 70px;
     font-size: 24px;
 }
 
