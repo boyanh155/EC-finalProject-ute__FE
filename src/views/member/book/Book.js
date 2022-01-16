@@ -14,7 +14,6 @@ import {
 } from "reactstrap";
 import axios from "axios";
 //
-import { postAvailability,postReserver } from "../../../apis";
 //
 const Table = React.lazy(() => import("./Table"));
 const Book = ({props}) => {
@@ -29,7 +28,9 @@ const Book = ({props}) => {
     date: new Date(),
     time: null,
     location: "Any Location",
-    size: "Standard",
+    // size: "Standard",
+    size: 0,
+
   });
   // member booking
   const [booking, setBooking] = useState({
@@ -117,7 +118,11 @@ const Book = ({props}) => {
       selection.date.getDate() +
       " " +
       selection.date.getFullYear();
-    let time = selection.time > 12 ? time + 12 + ":00" : time + ":00";
+      // 9AM vs 10 AM
+      // 9       10
+      let time = selection.time.slice(0,-2)
+      time = selection.time > 12 ? time + 12 + ":00" : time + ":00";
+      // 
     console.log(time);
     const datetime = new Date(date + " " + time);
     return datetime;
@@ -135,35 +140,75 @@ const Book = ({props}) => {
   useEffect(() =>{
     //Post data
     //selection from customer
+    // DIY
     if(selection.time && selection.date){
-      (async()=>{
         let dateTime = getDate()
         let body = {
           // date
-          date:dateTime
+          date:dateTime,
           // date:"Nov 10 2021 12:01"
-        }
-        await postAvailability(body,headers).then((data)=>{
-          console.log(data)
-          //capacity : [Standard,Vip]
-          let tables = data.tables.filter(table=>{
-            (selection.size ? selection.size===table.capacity : true)
-            (selection.location!== "Any Location " ? table.location ===selection.location
-            :true
-            )
-          })
-        setTotalTables(tables)
-        }).catch(err=>{          
-          console.log(`Cant post reservation : ${err.message}`)
-        })
-      })()
+        };
+        (async()=>{
+          await axios.post(`http://localhost:5000/api/book/availability`, body, {
+            headers,
+        }).then(res=>{
+          let tables = res.data.data.tables.filter(table=>{
+            return ((selection.size ? selection.size===table.capacity : true) 
+            &&(selection.location !== "Any Location" ? table.location ===selection.location:true))
+          }
+
+          )  
+          setTotalTables(tables);
+
+
+        }).catch(err=>console.log(`Cant post reservation : ${err.message}`));
+        })();
+
+        // 
+        // postAvailability(body,headers).then((data)=>{
+        //   console.log(` Halo sdasd`, data)
+        //   //capacity : [Standard,Vip]
+        //   let tables = data.data.data.tables.filter(table=>{
+        //     (selection.size ? selection.size===table.capacity : true)
+        //     (selection.location!== "Any Location " ? table.location ===selection.location
+        //     :true
+        //     );
+        //   });
+        // setTotalTables(tables);
+        // }).catch(err=>{          
+        //   console.log(`Cant post reservation : ${err.message}`);
+        // });
     }
+    // Copy
+    // if (selection.time && selection.date) {
+    //   (async _ => {
+    //     let datetime = getDate();
+    //     let res = await fetch("http://localhost:5000/api/book/availability", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       },
+    //       body: JSON.stringify({
+    //         date: datetime
+    //       })
+    //     });
+    //     res = await res.json();
+    //     // Filter available tables with location and group size criteria
+    //     let tables = res.data.tables.filter(table =>
+    //         (selection.size > 0 ? table.capacity >= selection.size : true) &&
+    //         (selection.location !== "Any Location"
+    //           ? table.location === selection.location
+    //           : true)
+    //     );
+    //     setTotalTables(tables);
+    //   })();
+    // }
   },[selection.time,selection.date,selection.size,selection.location])
 
 
     //Reserved 
     //Customer's contact
-    const reserver = async()=>{
+    const reserve = async()=>{
       console.log(booking.email.length??booking.name.length??booking.phone.length)
       if(booking.email.length??booking.name.length??booking.phone.length ===0){
         console.log("Incomplete details")
@@ -175,21 +220,21 @@ const Book = ({props}) => {
             date:dateTime,
             table:selection.table.id,
           }
-          postReserver(body,headers).then((data)=>{
-            console.log({
-              success:true,
-              message:data.data,
-            })
-            // nav to ThankYou.js
-            props.setPage(2)
-          }).catch(err=>{
-            console.log({
-              success:false,
-              message:err.message,
-            })
-            // nav to TryAgain.js
-            props.setPage(2)
-          })
+          // postReserver(body,headers).then((data)=>{
+          //   console.log({
+          //     success:true,
+          //     message:data.data,
+          //   })
+          //   // nav to ThankYou.js
+          //   props.setPage(2)
+          // }).catch(err=>{
+          //   console.log({
+          //     success:false,
+          //     message:err.message,
+          //   })
+          //   // nav to TryAgain.js
+          //   props.setPage(2)
+          // })
       }
     }
     // Select table
@@ -319,6 +364,7 @@ const Book = ({props}) => {
   return <div>
     {/* Title */}
       <Row noGutters className="text-center align-items-center pizza-cta">
+        {/* Book table button */}
         <Col>
             <p className="looking-for-table book-table-bt">
               <span>
@@ -338,10 +384,13 @@ const Book = ({props}) => {
         </Col>
       </Row>
       {/* Select Box */}
-      {!selection.table.id ? <div className="reservation-stuff">
+      {!selection.table.id ? 
+        // Customer's select option
+      <div className="reservation-stuff">
         {/* Select time */}
             <Row noGutters className="text-center align-items-center">
-              <Col xs="12" sm="3">
+        {/* Select date */}
+              <Col xs="12" sm="3" style={{}}>
               <input type="date" 
               required="required"
               className="booking-dropdown"
@@ -369,11 +418,160 @@ const Book = ({props}) => {
                 }
               }}
               />
-
               </Col>
+              {/*  */}
+        {/* Select hours */}
+              <Col xs="12" sm="3">
+                <UncontrolledDropdown>
+                  <DropdownToggle color="none" caret className="booking-dropdown">
+                      {selection.time===null ?"Select time":selection.time}
+                  </DropdownToggle>
+                  <DropdownMenu
+                  right
+                  className="booking-dropdown-menu"
+                  >
+                    {getTimes()}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Col>
+              {/*  */}
+                      {/* Select location */}
+                      <Col xs="12" sm="3">
+                <UncontrolledDropdown>
+                  <DropdownToggle color="none" caret className="booking-dropdown">
+                      {selection.location===null ?"Select location":selection.location}
+                  </DropdownToggle>
+                  <DropdownMenu
+                  right
+                  className="booking-dropdown-menu"
+                  >
+                    {getLocations()}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Col>
+              {/*  */}
+                                    {/* Select location */}
+                                    <Col xs="12" sm="3">
+                <UncontrolledDropdown>
+                  <DropdownToggle color="none" caret className="booking-dropdown">
+                      {selection.size===0 ?"Select table type":selection.size}
+                  </DropdownToggle>
+                  <DropdownMenu
+                  right
+                  className="booking-dropdown-menu"
+                  >
+                    {getSizes()}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Col>
+              {/*  */}
+            </Row>
+            {/* Display table */}
+            <Row noGutters className="table-display">
+              <Col>
+                {getEmptyTables()>0 ? <p className="available-table">
+                  {getEmptyTables()} available
+                </p>:null
+                }
+                {selection.date && selection.time ?(
+                    getEmptyTables()>0 ?(
+                      <div>
+                        <div className="table-key">
+                          <Row noGutters>
+                              {getTables()}
+                          </Row>
+                        </div>
+                      </div>
+                    ):(<p className="table-display-message">No available table</p>)
+
+                ):(<p>Please select a date and time for your reservation <i class="fas fa-exclamation-circle"></i></p>)}
+              </Col>      
             </Row>
       </div>
-      :null
+      :(
+        // Confirm customer contact info
+        // List contact info
+        <div id="confirm-reservation-stuff">
+          <Row noGutters className="text-center justify-content-center reservation-details-container">
+              {/* Name */}
+              <Col cs="12" sm="3" className="reservation-details">
+                <Input
+                  type="text"
+                  bsSize="lg"
+                  placeholder="Name"
+                  className="reservation-input"
+                  value={booking.name}
+                  onChange={
+                    e=>{
+                      setBooking({
+                        ...booking,
+                        name:e.target.value
+                      })
+                    }
+
+                  } 
+                />
+              </Col>
+              {/*  */}
+                            {/* Phone */}
+                            <Col cs="12" sm="3" className="reservation-details">
+                <Input
+                  type="text"
+                  bsSize="lg"
+                  placeholder="Phone"
+                  className="reservation-input"
+                  value={booking.phone}
+                  onChange={
+                    e=>{
+                      setBooking({
+                        ...booking,
+                        phone:e.target.value
+                      })
+                    }
+
+                  } 
+                />
+              </Col>
+              {/*  */}
+                            {/* Email */}
+                            <Col cs="12" sm="3" className="reservation-details">
+                <Input
+                  type="email"
+                  bsSize="lg"
+                  placeholder="Email"
+                  className="reservation-input"
+                  value={booking.email}
+                  onChange={
+                    e=>{
+                      setBooking({
+                        ...booking,
+                        email:e.target.value
+                      })
+                    }
+
+                  } 
+                />
+              </Col>
+              {/*  */}
+          </Row>
+          {/* Confirm book bt */}
+          <Row noGutters className="text-center">
+                  <Col>
+                    <Button
+                    color="none"
+                    className="book-table-btn"
+                    onClick={()=>{
+                      reserve()
+                    }}
+                    >
+                      Book now
+                    </Button>
+                  </Col>
+
+          </Row>
+          {/*  */}
+        </div>
+      )
       }
 
   </div>;

@@ -11,16 +11,12 @@ export const getRegionDistrict = async(province_id) =>
 
 //Booking function
 export const postAvailability = async(data, headers) => {
-    alert("Availability");
-    console.log(data, headers);
-    return await axios.post(`http://localhost:5000/api/book/availability`, data, {
+    await axios.post(`http://localhost:5000/api/book/availability`, data, {
         headers,
     });
 };
 export const postReserver = async(data, headers) => {
-    alert("Reserved");
-    console.log(data, headers);
-    return await axios.post(
+    await axios.post(
         `http://localhost:5000/api/book/availability/reserve`,
         data, {
             headers,

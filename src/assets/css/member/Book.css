@@ -5,7 +5,70 @@
 .reservation-stuff {}
 
 
-/* 
+/* Booking page
  */
 
-.booking-dropdown {}
+.selected-table {
+    font-size: 1.25rem;
+    padding-bottom: 2%;
+}
+
+
+/* box */
+
+.booking-dropdown {
+    width: 85%;
+    background-color: #b45e3c;
+    color: white;
+    padding: 4% 0;
+    margin: 2% 0;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s all linear;
+}
+
+.booking-dropdown:hover {
+    color: white;
+    transition: 0.3s all linear;
+    border-radius: 100px;
+}
+
+input[type=date] {
+    cursor: text;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    color: white;
+    border: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    /* -webkit-appearance: none; */
+    /* display: none; */
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+
+/* drop down menu */
+
+.booking-dropdown-menu {
+    width: 85%;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.table-display {
+    width: 100%;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    background-color: #FCE574;
+    color: black;
+    padding: 4% 0;
+    margin: 2% 0;
+    text-align: center;
+}
