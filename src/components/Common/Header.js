@@ -53,7 +53,7 @@ const Header = ({ scrollY }) => {
   const navBar = useRef();
   const overlayHeader = useRef();
   const contactSection = useRef();
-  const { y:scrollVar } = useWindowScroll();
+  const { y: scrollVar } = useWindowScroll();
   const y = scrollY || scrollVar;
   //false is big size
   const [headerState, setHeaderState] = useState(false);

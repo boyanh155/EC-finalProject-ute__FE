@@ -42,6 +42,7 @@ function App() {
               <Route exact path="/dashboard" element={<Dashboard />} />
               {/* Personalize */}
               <Route exact path="/personalize" element={<Personalize />} />
+              {/* Product */}
               {/* Attt */}
               <Route exact path="/attt" element={<Attt />} />
               {/* Home */}

@@ -1,0 +1,28 @@
+/* Feature wrapper */
+
+.featureBG {
+    background-color: black;
+}
+
+.centerWord.feature {}
+
+
+/* Feature  list*/
+
+.featureList {
+    justify-content: space-around;
+}
+
+.featureList__item {
+    margin-bottom: 14px;
+}
+
+
+/* Feature item*/
+
+.featureItemWrapper {
+    height: 400px;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 4px;
+}
