@@ -14,7 +14,7 @@ const FeartureItem = ({...props}) => {
             <div className='featureItemWrapper__img'>
                 <LazyLoadImage
                 src={["imgSrc"]}
-                width={"100%"}
+                width={"100%"}                
                 />
             </div>
             {/* info */}
