@@ -21,6 +21,8 @@ const Cart = React.lazy(() => import("./views/member/Cart"));
 const Book = React.lazy(() => import("./views/member/book"));
 const Dashboard = React.lazy(() => import("./views/member/Dashboard"));
 const Personalize = React.lazy(() => import("./views/Personalize"));
+const SaleTable = React.lazy(()=>import("./views/admin/SaleTable"))
+// Admin
 function App() {
   return (
     <Suspense fallback={<h1>Loading ...</h1>}>
@@ -43,6 +45,8 @@ function App() {
               {/* Personalize */}
               <Route exact path="/personalize" element={<Personalize />} />
               {/* Product */}
+              {/* Revenue Statistic */}
+              <Route exact path="/revenue/*" element={<SaleTable/>}/>
               {/* Attt */}
               <Route exact path="/attt" element={<Attt />} />
               {/* Home */}
