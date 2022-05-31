@@ -44,6 +44,13 @@ const Auth = ({ authName }) => {
   // refresh
   let body
   let navigate = useNavigate()
+  let admin = false
+  // data
+  console.log(authState.user)
+  if(authState.user){
+    admin = authState.user.admin
+  }
+  // let admin = authState.user.admin || false
   console.log(authState)
   //Loading
   if(authLoading){
@@ -53,13 +60,22 @@ const Auth = ({ authName }) => {
   }
   //Pass
   else if(isAuthenticated){
-    navigate('/dashboard')
+    console.log(admin)
+    if(!admin){
+      navigate('/dashboard')
+    }
+    else{
+      navigate('/revenue')
+    }
   }
 
   body = (
     <>
-            {isAuthenticated &&<Navigate to="/dashboard" replace={true}/>}
-               {authName === "login" && <LoginForm />}
+            {isAuthenticated?(admin ?<Navigate to="/revenue" replace={true}/>:<Navigate to="/dashboard" replace={true}/>):(null)}
+
+            {/* {(isAuthenticated&&admin) &&<Navigate to="/revenue" replace={true}/>}
+            {(isAuthenticated&&!admin) &&<Navigate to="/dashboard" replace={true}/>} */}
+              {authName === "login" && <LoginForm />}
           {authName === "register" && <RegisterForm />}
     </>
   )

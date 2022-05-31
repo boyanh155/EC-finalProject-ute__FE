@@ -140,7 +140,7 @@ const Service = ({ y }) => {
       <Bear />
       {/* Goto Personalize */}
       <PersonalizeBt style={buttonState  ? btStyle : {}}>
-        <Link to="#">
+        <Link to="personalize">
           <span>Personalize your style</span>
         </Link>
       </PersonalizeBt>

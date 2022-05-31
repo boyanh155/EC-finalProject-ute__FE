@@ -16,6 +16,7 @@ const AuthContextProvider = ({ children }) => {
     authLoading: true,
     isAuthenticated: false,
     user: null,
+    admin:false,
   });
   //Authenticate user
   const loadUser = async () => {
@@ -33,10 +34,10 @@ const AuthContextProvider = ({ children }) => {
           payload: {
             isAuthenticated: true,
             user: res.data.user,
+            admin:res.data.user.admin || false,
           },
         });
       }
-      console.log("authState:", authState);
     } catch (e) {
       //delete all access token in local storage
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);

@@ -32,11 +32,16 @@ const Index = () => {
   const validateEmail = (e) => {
     const emailRex =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emailRex.test(e.target.value)) {
-      setCheck(true);
-    } else if (!emailRex.test(e.target.value)) {
-      setCheck(false);
+    if(e.target.value != "admin"){
+      if (emailRex.test(e.target.value)) {
+        setCheck(true);
+      } else if (!emailRex.test(e.target.value)) {
+        setCheck(false);
+      }
+    }else{
+      setCheck(true)
     }
+    
     if (e.target.value === "") {
       setCheck(undefined);
     }
@@ -61,8 +66,15 @@ const Index = () => {
     e.preventDefault();
     try {
       const loginData = await loginUser(loginForm);
+      console.log(loginData)
       if (loginData.success) {
-        navigate("/dashboard");
+        if(loginData.admin){
+          navigate("/revenue");
+
+        }else{
+
+          navigate("/dashboard");
+        }
       } else {
       }
     } catch (error) {
@@ -83,7 +95,7 @@ const Index = () => {
           <Col className="relative-7 " md={8}>
             <FormGroup floating>
               <Input
-                type="email"
+                type="text"
                 id="emailInput"
                 placeholder="Email"
                 onInput={(e) => validateEmail(e)}

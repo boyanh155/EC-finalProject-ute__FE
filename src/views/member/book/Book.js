@@ -16,7 +16,7 @@ import axios from "axios";
 //
 //
 const Table = React.lazy(() => import("./Table"));
-const Book = ({props}) => {
+const Book = (props) => {
   const [totalTables, setTotalTables] = useState([]);
   // Selection
   // member selection
@@ -123,7 +123,6 @@ const Book = ({props}) => {
       let time = selection.time.slice(0,-2)
       time = selection.time > 12 ? time + 12 + ":00" : time + ":00";
       // 
-    console.log(time);
     const datetime = new Date(date + " " + time);
     return datetime;
   };
@@ -161,7 +160,7 @@ const Book = ({props}) => {
           setTotalTables(tables);
 
 
-        }).catch(err=>console.log(`Cant post reservation : ${err.message}`));
+        }).catch(err=>console.log(`Cant post get table : ${err.message}`));
         })();
 
         // 
@@ -209,17 +208,34 @@ const Book = ({props}) => {
     //Reserved 
     //Customer's contact
     const reserve = async()=>{
-      console.log(booking.email.length??booking.name.length??booking.phone.length)
-      if(booking.email.length??booking.name.length??booking.phone.length ===0){
-        console.log("Incomplete details")
+      // console.log(booking.email.length,booking.name.length,booking.phone.length)
+      // console.log(booking)
+      if((booking.email.length??booking.name.length??booking.phone.length) ===0){
         setReservationError(true)
+        // console.log("Invalid data")
       }else{
           const dateTime = getDate()
+        // console.log("Valid data")
+          // console.log(dateTime)
+          // console.log(selection)
           let body = {
             ...booking,
             date:dateTime,
             table:selection.table.id,
           }
+          //post api
+        await axios.post('http://localhost:5000/api/book/reserve',body,
+        {
+          headers,
+        }).then((res)=>{
+            // console.log(res)
+            if(res.data.success){
+              // console.log("Reserved")
+              props.setPage(2)
+            }
+          }).catch(err=>{
+            console.log(`Can't post reservation ${err.message}`)
+          })
           // postReserver(body,headers).then((data)=>{
           //   console.log({
           //     success:true,
@@ -469,14 +485,17 @@ const Book = ({props}) => {
             {/* Display table */}
             <Row noGutters className="table-display">
               <Col>
+              {/* Number of table */}
                 {getEmptyTables()>0 ? <p className="available-table">
                   {getEmptyTables()} available
                 </p>:null
                 }
+                
                 {selection.date && selection.time ?(
                     getEmptyTables()>0 ?(
                       <div>
                         <div className="table-key">
+                          {/* Table Row */}
                           <Row noGutters>
                               {getTables()}
                           </Row>

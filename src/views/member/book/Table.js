@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Row,Col } from "reactstrap";
 import "../../../assets/css/member/table.css"
 const Table = (props) => {
-  console.log(props)
   // Row 1
+  console.log(`table : ${props.table}`)
+
  const getRow1 =()=>{
    let chairs=[];
+      console.log(props.chair)
    for(let i = 0;i<Math.ceil(props.chair/2);i++){
      chairs.push(     
      <span
@@ -56,6 +58,7 @@ const getRow2 =()=>{
               {/* {getRow2()} */}
             </Col>
         </Row>
+        {/* Table name */}
         <p className="text-center table-name">
           {props.name}
         </p>
