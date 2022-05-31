@@ -23,3 +23,6 @@ export const postReserver = async(data, headers) => {
         }
     );
 };
+export const getUsers = async() => {
+    await axios.get("http://localhost:5000/api/user");
+};

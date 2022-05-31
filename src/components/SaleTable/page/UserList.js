@@ -3,6 +3,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../../components/SaleTable/page/dummyData";
 import { Link } from "react-router-dom";
+import { getUsers } from "../../../apis";
 import "../../../assets/css/admin/userlist.css";
 const UserList = () => {
   const [data, setData] = useState(userRows);
@@ -14,11 +15,15 @@ const UserList = () => {
       phone : 786791782,
       admin :false,
     }
+    console.log(getUsers())
     let dummyData = []
-    for (let i = 0;i<13;i++){
-      rawData = {...rawData,...{id:i+1}}
-      dummyData.push(rawData)
-    }
+    getUsers.then(data=>{
+      dummyData = data.users
+    }).catch(e=>console.log(e.message))
+    // for (let i = 0;i<13;i++){
+    //   rawData = {...rawData,...{id:i+1}}
+    //   dummyData.push(rawData)
+    // }
     setData(dummyData)
   
   },[])
