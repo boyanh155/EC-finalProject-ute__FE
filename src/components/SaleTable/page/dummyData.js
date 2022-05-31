@@ -51,21 +51,21 @@ export const userData = [{
 
 export const productData = [{
         name: "Jan",
-        "Sales": 4000,
+        Sales: 4000,
     },
     {
         name: "Feb",
-        "Sales": 3000,
+        Sales: 3000,
     },
     {
         name: "Mar",
-        "Sales": 5000,
+        Sales: 5000,
     },
 ];
 
 export const userRows = [{
         id: 1,
-        username: "Jon Snow",
+        username: "Jon Dang",
         avatar: "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
         email: "jon@gmail.com",
         status: "active",
