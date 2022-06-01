@@ -1,6 +1,5 @@
 export const userData = [{
         name: "Janar",
-        age: "Haha",
         "Active User": 4000,
     },
     {
