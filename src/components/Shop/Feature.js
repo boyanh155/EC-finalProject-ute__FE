@@ -14,10 +14,10 @@ const Feature = () => {
             <Fitem imgSrc={"red"}/>
         </div>
         <div className="col l-3 m-6 c-12 featureList__item">
-            <Fitem imgSrc={"red"}/>
+            <Fitem imgSrc={"green"}/>
         </div>
         <div className="col l-3 m-6 c-12 featureList__item">
-            <Fitem imgSrc={"red"}/>
+            <Fitem imgSrc={"grey"}/>
         </div>
         <div className="col l-3 m-6 c-12 featureList__item">
             <Fitem imgSrc={"red"}/>

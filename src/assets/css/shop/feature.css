@@ -1,3 +1,8 @@
+a {
+    text-decoration: none;
+}
+
+
 /* Feature wrapper */
 
 .featureBG {
@@ -10,7 +15,7 @@
 /* Feature  list*/
 
 .featureList {
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .featureList__item {
@@ -22,7 +27,113 @@
 
 .featureItemWrapper {
     height: 400px;
-    width: 70%;
+    width: 96%;
     margin: 0 auto;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: 0.3s linear all;
+}
+
+
+/* hover card */
+
+.featureItemWrapper:hover {
+    transform: translate(0, -15px);
+    background-color: white;
+}
+
+.featureItemWrapper:hover .featureItemWrapper__info {
+    color: black;
+}
+
+.featureItemWrapper:hover .featureItemWrapper__info__under--add a {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+}
+
+.featureItemWrapper:hover .featureItemWrapper__info__price--first {
+    color: black
+}
+
+.featureItemWrapper:hover .featureItemWrapper__info__price--second {
+    color: rgb(0, 0, 0, 1)
+}
+
+
+/* img */
+
+.featureItemWrapper__img {}
+
+
+/* info */
+
+.featureItemWrapper__info {
+    color: white;
+    width: 100%;
+    display: flex;
+}
+
+.featureItemWrapper__info.row {
+    font-size: 18px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.featureItemWrapper__info div {}
+
+.featureItemWrapper__info__name {}
+
+.featureItemWrapper__info__price {
+    display: flex;
+    justify-content: center;
+}
+
+.featureItemWrapper__info__price--first {
+    color: yellow;
+    margin-right: 4px;
+}
+
+.featureItemWrapper__info__price--second {
+    text-decoration: line-through;
+    opacity: 0.6;
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+.featureItemWrapper__info__price--second span {}
+
+
+/* under */
+
+.featureItemWrapper__info__under {
+    flex-direction: row;
+    align-items: center;
+}
+
+.featureItemWrapper__info__under--size {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+}
+
+.featureItemWrapper__info__under--size div:nth-child(2) {
+    margin-left: 12px;
+}
+
+.featureItemWrapper__info__under--add {
+    display: flex;
+    justify-content: space-between;
+}
+
+.featureItemWrapper__info__under--add a {
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 8px;
+    background-color: yellow;
+    font-weight: 600;
 }
