@@ -4,26 +4,25 @@ import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../../components/SaleTable/page/dummyData";
 import { Link } from "react-router-dom";
 import { getUsers } from "../../../apis";
+import axios from "axios"
 import "../../../assets/css/admin/userlist.css";
 const UserList = () => {
-  const [data, setData] = useState(userRows);
-  useEffect(()=>{
-    let rawData = {
-      email : "locle2001@gmail.com",
-      firstName : "Loc",
-      lastName : "Le",
-      phone : 786791782,
-      admin :false,
-    }
-    console.log(getUsers())
-    let dummyData = []
-    getUsers.then(data=>{
-      dummyData = data.users
-    }).catch(e=>console.log(e.message))
-    // for (let i = 0;i<13;i++){
-    //   rawData = {...rawData,...{id:i+1}}
-    //   dummyData.push(rawData)
-    // }
+  const [data, setData] = useState([]);
+  useEffect(async()=>{
+    let rawData = []
+    await axios.get('http://localhost:5000/api/user').then((res)=>{
+      rawData = res.data.users
+    }).catch(e=>{
+      console.log(e.message)
+    })
+    let dummyData = rawData.map((v,i)=>{
+      return {
+        ...v
+        ,
+        id : i+1
+      }
+    })
+
     setData(dummyData)
   
   },[])
@@ -86,14 +85,14 @@ const UserList = () => {
   ];
   return (
     <div className="userList">
+      {console.log(data)}
       <DataGrid
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={7}
+        pageSize={10}
         checkboxSelection
       />
-      {console.log(data)}
     </div>
   );
 };

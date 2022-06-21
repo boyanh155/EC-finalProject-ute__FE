@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import "../../assets/css/admin/chart.css";
 import {
   LineChart,
@@ -8,8 +8,16 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import axios from 'axios';
 
 const Chart = ({ title, data, dataKey, grid }) => {
+  useEffect(async()=>{
+    let rawData = await axios.get('http://localhost:5000/api/admin/order').then(res=>res.data.orders).catch(e=>console.log(e.message))
+    rawData =  rawData.map((v)=>{
+      return v
+    })
+    console.log(rawData)
+  },[])
   return (
     <div className="chart">
 

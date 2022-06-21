@@ -223,6 +223,7 @@ const Book = (props) => {
             date:dateTime,
             table:selection.table.id,
           }
+          console.log(body)
           //post api
         await axios.post('http://localhost:5000/api/book/reserve',body,
         {
