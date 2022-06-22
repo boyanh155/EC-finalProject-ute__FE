@@ -28,19 +28,21 @@ const RegisterWrapper = styled.div`
   // height:100vh;
   // display:flex;
   // align-items:center;
-  // justify-content: flex-start;
-  // position:relative;
+  // justify-content: center;
+  // position:absolute;
+  // top:50px;
+
   // background-image:url(${Bg});
   // background-position:center;
   // background-size:cover;
-  // z-index:1;
+  // // z-index:1;
   // &::before{
   //     content:"";
   //     position:absolute;
   //     background-color:rgba(0,0,0,0.6);
   //     z-index:2;
-  //     width: 100vw;
-  //     height: 100vh;
+  //     width: 100%;
+  //     height: 100%;
   // }
 `;
 //pattern
