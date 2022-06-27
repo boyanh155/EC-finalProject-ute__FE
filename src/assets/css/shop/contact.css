@@ -29,10 +29,16 @@
 
 .ContactWrapper {
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 2;
 }
 
 .ContactWrapper__left {}
 
 .ContactWrapper__right {}
+
+.buttonWrap {
+    justify-content: flex-end;
+    position: relative;
+    top: -12px;
+}
