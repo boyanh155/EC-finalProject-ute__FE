@@ -1,0 +1,5 @@
+.Wrapper {
+    height: 500px;
+    background: linear-gradient( 180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.132) 25%, rgba(0, 0, 0, 0.22) 45.31%, rgba(0, 0, 0, 0.62) 100%);
+    color: #000;
+}

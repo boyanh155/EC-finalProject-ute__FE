@@ -92,7 +92,7 @@ a {
 }
 
 .featureItemWrapper__info__price--first {
-    color: yellow;
+    color: #ffc107;
     margin-right: 4px;
 }
 
@@ -134,6 +134,6 @@ a {
     text-decoration: none;
     width: 100%;
     border-radius: 8px;
-    background-color: yellow;
+    background-color: #ffc107;
     font-weight: 600;
 }

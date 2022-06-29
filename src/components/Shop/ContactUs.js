@@ -1,6 +1,7 @@
 import React, { Suspense, useState,useRef } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/shop/contact.css";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import {
   Input,
   Form,
@@ -11,6 +12,7 @@ import {
   FormText,
   Row,
   Col,
+  Badge
 } from "reactstrap";
 // pic
 const ContactUs = () => {
@@ -38,6 +40,15 @@ const ContactUs = () => {
   const submitHandler = async ()=>{
     console.log("Submit Contact")
   }
+  // google map component
+  const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+  </GoogleMap>
+  ))
   return (
     <Suspense className="CWrapper" fallback={<h1>Loading...</h1>}>
       <div className="CWrapper">
@@ -46,9 +57,8 @@ const ContactUs = () => {
         <Form ref={formE} inline action="/contact" method="POST" onSubmit={submitHandler}>
           <Row className="ContactWrapper mx-4 justify-content-space-between">
             {/* Col left */}
-            <Col className="ContactWrapper__left relative-7" md={4}>
+            <Col className="ContactWrapper__left relative-7" md={6}>
               {/* Row 1 - email box */}
-              
               <Row>
               <FormGroup floating>
                 <Input
@@ -106,39 +116,34 @@ const ContactUs = () => {
 
                 </FormGroup>
               </Row>
-            </Col>
-              {/* Col middle */}
-              <Col className="ContactWrapper__right" md={4}>
-              {/* message box */}
-            <FormGroup floating>
-              <Input
-              id="messageInput"
-              name="message"
-              value={input.message}
-              type="textarea"
-              style={{height:"156px",resize:"none"}}
-              onInput={e=>{
-                setInput({
-                  ...input,
-                  [e.target.name]:e.target.value
-                }
-                )
-              }}
-              >
-              </Input>
-              <Label
-              style={{ color: "#ccc"}}
-              htmlFor="messageInput"
-              >
-                Enter your message
-              </Label>
-              <FormText>Message</FormText>
+              <Row>
+                  <FormGroup floating>
+                  <Input
+                  id="messageInput"
+                  name="message"
+                  value={input.message}
+                  type="textarea"
+                  style={{height:"156px",resize:"none"}}
+                  onInput={e=>{
+                    setInput({
+                      ...input,
+                      [e.target.name]:e.target.value
+                    }
+                    )
+                  }}
+                  >
+                  </Input>
+                  <Label
+                  style={{ color: "#ccc"}}
+                  htmlFor="messageInput"
+                  >
+                    Enter your message
+                  </Label>
+                  <FormText>Message</FormText>
 
-            </FormGroup>  
-            </Col>
-            {/* Col right */}
-            <Col className="ContactWrapper__middle" md={4}>
-              {/* Select issue */}
+                </FormGroup>  
+              </Row>
+                           {/* Select issue */}
               {/* Row 1 - select issue */}
               <Row>
 
@@ -171,15 +176,42 @@ const ContactUs = () => {
                   </FormText>
               </FormGroup>
               </Row>
-              {/* Row 2 - button */}
-                  <Row className="buttonWrap" >
-                    <Col md={2}>
-                      <Button color="primary" >
+              
+            </Col>
+            {/* Col right */}
+            <Col className="ContactWrapper__middle" md={6}>
+              {/* Row 0 - Right title */}
+              <Row>
+              <Badge 
+              className="Contact__badge"
+              color="warning"
+              pill
+              >
+                Our Store
+              </Badge>
+              </Row>
+            {/* Row 1 - Map */}
+            <Row>
+            <MyMapComponent
+            isMarkerShown
+            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `460px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+             />
+
+            </Row>
+            {/* Row 2 - button */}
+            <Row className="buttonWrap" >
+                    <Col md={4}>
+                      <Button color="warning"  
+                      style={{width:"100%",fontWeight:"600"}}
+                      >
                         Send
                       </Button>
                     </Col>
                     <Col md={2}>
-                      <Button color="primary" 
+                      <Button
                       onClick={e=>{
                         e.preventDefault()
                           //email,invoice,message,issue
@@ -191,7 +223,11 @@ const ContactUs = () => {
                         // formE.current.reset()
                       }}
                       >
+                        <span
+                        >
+
                         Reset
+                        </span>
                       </Button>
                     </Col>
                   </Row>

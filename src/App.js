@@ -22,6 +22,7 @@ const Book = React.lazy(() => import("./views/member/book"));
 const Dashboard = React.lazy(() => import("./views/member/Dashboard"));
 const Personalize = React.lazy(() => import("./views/Personalize"));
 const SaleTable = React.lazy(()=>import("./views/admin/SaleTable"))
+const Product = React.lazy(()=>import("./views/product"))
 // Admin
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
               {/* Personalize */}
               <Route exact path="/personalize" element={<Personalize />} />
               {/* Product */}
+              <Route exact path="/product/*" element={<Product/>}/>
               {/* Revenue Statistic */}
               <Route exact path="/revenue/*" element={<SaleTable/>}/>
               {/* Attt */}
