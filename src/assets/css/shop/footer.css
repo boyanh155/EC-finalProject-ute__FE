@@ -1,5 +1,65 @@
-.Wrapper {
-    height: 500px;
-    background: linear-gradient( 180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.132) 25%, rgba(0, 0, 0, 0.22) 45.31%, rgba(0, 0, 0, 0.62) 100%);
-    color: #000;
+.SF_Wrapper {
+    height: 100%;
+    /* background: linear-gradient( 180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.132) 25%, rgba(0, 0, 0, 0.22) 45.31%, rgba(0, 0, 0, 0.62) 100%); */
+    background-image: url("https://gcteng.com/wp-content/uploads/footer-background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    background-color: #ffc107;
+    position: relative;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    padding-top: 12px;
+}
+
+.SF_Wrapper::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.SF_Content * {
+    position: relative;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+
+/* Row Info */
+
+.Info__Row {}
+
+.Info__Col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+
+/* Row Info - Col  */
+
+.Info__Col--title {
+    font-size: 22px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 400px;
+}
+
+.Info__Col--content {
+    font-size: 16px;
+    width: 153px;
+    text-transform: capitalize;
 }
